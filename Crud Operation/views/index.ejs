@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5 border p-3 rounded-2 bg-light">
+        <div class="row">
+            <form class="m-auto col-8 border border-black p-3 rounded-3" action="/savedata" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="id" value="<%= pdata.id%>">
+            
+                <label class="form-label"> Name: </label>
+                <input class="form-control m-0" type="text" name="name" value="<%= pdata.name%>">
+                <label class="form-label">Age: </label>
+                <input class="form-control" type="number" name="age" value="<%= pdata.age%>">
+                <label class="form-label">Image :</label>
+                <input class="form-control" type="file" name="image">
+                
+                <input class="btn btn-primary form-control mt-4" type="submit" value="Submit">
+            </form>
+            <br><br>
+            
+    <table class="m-auto col-8 border border-black p-3 rounded-3">
+
+        <tr class="text-center">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Image</th>
+            <th colspan="2">Action</th>
+        </tr>
+
+        <% data.forEach((a)=>{ %>
+
+            <tr align="center">
+                <td>
+                    <%= a.id %>
+                </td>
+                <td>
+                    <%= a.name %>
+                </td>
+                <td>
+                    <%= a.age %>
+                </td>
+                <td>
+                    <img src="../<%= a.image %>" alt="User Image" height="60px" width="60px">
+                </td>
+                <td><a href="/edit/<%= a.id %>">Edit</a></td>
+                <td><a href="/delete/<%= a.id %>">Delete</a></td>
+            </tr>
+            
+            <%});%>
+            
+        </table>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
